@@ -7,7 +7,8 @@ class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if not self.slug:
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):

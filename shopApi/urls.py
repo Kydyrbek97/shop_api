@@ -22,9 +22,11 @@ from rest_framework.routers import SimpleRouter
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from category.views import CategoryViewSet
+from product.views import ProductViewSet
 
 router = SimpleRouter()
 router.register('categories', CategoryViewSet)
+router.register('products', ProductViewSet)
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -48,3 +50,6 @@ urlpatterns = [
     path('api/v1/accounts/', include('account.urls')),
     path('api/v1/', include(router.urls))
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
