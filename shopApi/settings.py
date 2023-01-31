@@ -190,7 +190,6 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar_YourCustomToolbarConfig': [
