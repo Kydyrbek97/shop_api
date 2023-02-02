@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from product.models import Product
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from account.send_mail import send_notification
 
 User = get_user_model()
 
@@ -30,4 +33,9 @@ class Order(models.Model):
 
     def __str__(self):
         return f'{self.id} -> {self.user}'
+
+
+@receiver(post_save, sender=Order)
+def order_post_save(sender, instance, *args, **kwargs):
+    send_notification(instance.user.email, instance.id, instance.total_sum)
 

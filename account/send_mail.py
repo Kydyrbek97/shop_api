@@ -10,3 +10,22 @@ def send_confirmation_email(user, code):
         [user],
         fail_silently=False
     )
+
+
+def send_reset_email(user):
+    code = user.activation_code
+    email = user.email
+    send_mail('Letter with password rest code!',
+              f'Your reset code {code}', 'from@example.com',
+              [email, ], fail_silently=False)
+
+
+def send_notification(user_email, order_id, price):
+    send_mail('Уведомления о создание заказа!',
+              f''' Вы создали заказ №{order_id}, ожидайте звонка!
+               Полная стоимость вашего заказа: {price}.
+                Спасибо за то что выбрали нас!''',
+              "from@example.com",
+              [user_email, ],
+              fail_silently=False
+              )
