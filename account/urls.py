@@ -5,6 +5,7 @@ from account import views
 from account.views import LogoutView
 
 urlpatterns = [
+    path('', views.UserListApiView.as_view()),
     path('register/', views.RegistrationView.as_view()),
     path('activate/<uuid:activation_code>/', views.ActivationView.as_view()),
     path('login/', views.LoginView.as_view()),
