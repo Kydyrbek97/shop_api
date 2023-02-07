@@ -9,7 +9,6 @@ from . import serializers
 from .permissions import IsAuthor
 
 
-
 # Create your views here.
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
@@ -53,4 +52,3 @@ class ProductViewSet(ModelViewSet):
         review = product.reviews.get(owner=user)
         review.delete()
         return response.Response('Successfully deleted', status=204)
-
