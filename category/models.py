@@ -19,7 +19,7 @@ class Category(models.Model):
 
 @receiver(pre_save, sender=Category)
 def category_pre_save(sender, instance, *args, **kwargs):
-    print(sender, '!!!!!!!!!!!!!!!')
-    print(instance, '!!!!!!!!!!!!!!!')
+    # print(sender, '!!!!!!!!!!!!!!!')
+    # print(instance, '!!!!!!!!!!!!!!!')
     if not instance.slug:
         instance.slug = slugify(instance.name)
